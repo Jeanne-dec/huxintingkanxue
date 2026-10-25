@@ -1,0 +1,3 @@
+html.flow-mode [data-dev-only]{display:none!important}
+.pavilion-seven .preview-actions .continue-link{display:block;min-height:42px;padding:.5em .65em;border:1px solid var(--blue,#4b6673);background:var(--blue,#4b6673);color:#fff;text-align:center;text-decoration:none;font:inherit}
+.pavilion-seven .preview-actions .continue-link:hover{background:#55727f}

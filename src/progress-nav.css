@@ -1,0 +1,50 @@
+/* 顶部教学进度导航：修复雪景 25% → 张岱四笔 25% → 识人评痴 50%。
+   第一、二环节同属第一节，共用连续的墨青灰进度线；识人评痴属第二节，用淡赭石色。
+   只保留一行文字与一条进度线，无梅花、山石等装饰，无点击交互。 */
+:root{--cp-h:64px;--cp-ink:#6b8580;--cp-ochre:#a9765c;--cp-idle:#dcd7cc;--cp-text:#33454e;--cp-text-current:#243238;--cp-text-idle:#a9a79c;--cp-ochre-text:#8e4f38}
+.course-progress{position:fixed;top:0;left:0;right:0;z-index:60;height:var(--cp-h);box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-end;padding:0 max(3vw,20px) 9px;pointer-events:none;font-family:"Noto Serif CJK SC","Source Han Serif SC","Songti SC","SimSun",serif;background:linear-gradient(180deg,rgba(247,245,238,.97) 0%,rgba(247,245,238,.88) 66%,rgba(247,245,238,0) 100%)}
+.cp-inner{width:min(1400px,100%);margin:0 auto}
+.cp-labels{display:grid;grid-template-columns:25fr 25fr 50fr;align-items:end;margin:0 0 7px}
+.cp-label{text-align:center;line-height:1.25;letter-spacing:.14em;font-size:clamp(14px,.92vw,17px);color:var(--cp-text-idle);transition:color .25s ease}
+.cp-label[data-state="done"],.cp-label[data-state="current"]{color:var(--cp-text)}
+.cp-label[data-state="current"]{font-weight:700;font-size:clamp(16px,1.08vw,20px);color:var(--cp-text-current)}
+.course-progress[data-current-stage="3"] .cp-label[data-state="current"]{color:var(--cp-ochre-text)}
+.cp-track{display:grid;grid-template-columns:25fr 25fr 50fr;gap:14px;align-items:center}
+.cp-segment{position:relative;display:block;height:3px;background:var(--cp-idle);border-radius:1px;transition:background .3s ease}
+.cp-segment[data-state="done"],.cp-segment[data-state="current"]{background:var(--cp-ink)}
+.course-progress[data-current-stage="3"] .cp-segment[data-stage="3"]{background:var(--cp-ochre)}
+.course-progress[data-current-stage="4"] .cp-label[data-stage="3"]{color:var(--cp-ochre-text)}
+.course-progress[data-current-stage="4"] .cp-segment[data-stage="3"]{background:var(--cp-ochre)}
+.cp-segment[data-state="current"]::after{content:'';position:absolute;right:-3px;top:50%;width:8px;height:8px;border-radius:50%;background:inherit;transform:translateY(-50%)}
+
+/* 全屏与示范填入：贴在进度条右下角，任何页面都可用 */
+.cp-tools{position:absolute;right:max(1vw,8px);bottom:3px;display:flex;align-items:center;gap:6px;pointer-events:auto}
+.cp-fs{padding:.15em .7em;border:1px solid rgba(107,133,128,.55);border-radius:3px;background:rgba(252,251,246,.92);color:var(--cp-text);font:inherit;font-size:clamp(11px,.78vw,13px);letter-spacing:.08em;cursor:pointer;line-height:1.5}
+.cp-fs:hover{background:#fff}
+.cp-fs:focus-visible{outline:2px solid var(--cp-ink);outline-offset:2px}
+.cp-demo{padding:.15em .7em;border:1px dashed rgba(169,118,92,.6);border-radius:3px;background:rgba(252,251,246,.92);color:var(--cp-ochre-text);font:inherit;font-size:clamp(11px,.78vw,13px);letter-spacing:.08em;cursor:pointer;line-height:1.5}
+.cp-demo[hidden]{display:none}
+.cp-demo:hover{background:#fff}
+.cp-demo[data-busy="true"]{cursor:progress;opacity:.75}
+.cp-demo:focus-visible{outline:2px solid var(--cp-ochre);outline-offset:2px}
+
+/* —— 各页面为顶部进度让位（只改外层容器，不动页面内部设计）—— */
+/* 主课件（index.html 单页视图） */
+body.has-progress #app{height:calc(100vh - var(--cp-h));margin-top:var(--cp-h)}
+body.has-progress .stage{height:calc(100vh - var(--cp-h))}
+body.has-progress .demo-panel{top:calc(var(--cp-h) + 4px)}
+/* 第二幕工作台与分步教学页 */
+body.has-progress .lesson [data-l="back"],body.has-progress .lesson [data-l="export"]{top:calc(3vh + var(--cp-h))}
+/* 人物笺 / 个人初判 / 同伴质疑 */
+body.has-progress .debate-page{padding-top:calc(clamp(22px,3vw,48px) + var(--cp-h));min-height:calc(100vh - var(--cp-h))}
+body.has-progress .judgment-page,body.has-progress .challenge-page{min-height:calc(100vh - var(--cp-h))}
+/* 课堂追问桥页（含“再看雪湖”页） */
+body.has-progress .bridge-stage{inset:calc(var(--cp-h) + 12px) 1.5vw 12px}
+/* 此刻回应 / 我的雪湖画卷 */
+body.has-progress .finale-page{padding-top:calc(18px + var(--cp-h))}
+/* 尾声 · 课后学习任务 */
+body.has-progress .homework-page{height:calc(100vh - var(--cp-h));margin-top:var(--cp-h);padding-bottom:34px}
+/* 一点入亭 V8（课堂模式） */
+html.flow-mode body.has-progress .pavilion-eight{height:calc(100vh - var(--cp-h));margin-top:var(--cp-h)}
+html.flow-mode body.has-progress .stage-shell{padding:6px 14px 0}
+html.flow-mode body.has-progress .stage{width:min(100%,calc((100vh - var(--cp-h) - 22px)*16/9));max-height:calc(100vh - var(--cp-h) - 22px)}

@@ -1,0 +1,6 @@
+export const btn=(text,action,kind='')=>`<button class="btn ${kind}" data-action="${action}">${text}</button>`;
+export const panel=(title,body,footer,extra='')=>`<section class="panel ${extra}" aria-label="${title}"><button class="close" data-action="home" aria-label="收起">×</button><div class="ornament">❧</div><h2>${title}</h2><div class="rule"><span>◇</span></div>${body}<div class="actions">${footer}</div></section>`;
+export const choices=(items,group,vertical=false)=>`<div class="choices ${vertical?'vertical':''}" role="group">${items.map((x,i)=>`<button class="option" data-group="${group}" data-value="${i}" data-answer="${x}" aria-pressed="false">${vertical?'<span class="option-art">⌁</span>':''}<span>${x}</span>${vertical?'<i></i>':''}</button>`).join('')}</div>`;
+export const progress=(n)=>`<div class="progress">修复进度 <strong>${n} / 3</strong><span class="dots">${[0,1,2].map(i=>`<i class="${i<n?'done':''}"></i>`).join('')}</span></div>`;
+export const feedback=(text='')=>`<div class="feedback">${text?`◈ &nbsp;${text}`:''}</div>`;
+export const audio=()=>`<div class="audio available" data-birds aria-label="此处的鸟鸣是雪湖中不该出现的声音"><button type="button" data-action="play-birds" aria-label="点击聆听此刻的鸟鸣">♪</button><div><b>点击听一听此刻的声音</b><small>听清后，为这段声音寻找原文的答案。</small></div></div>`;
