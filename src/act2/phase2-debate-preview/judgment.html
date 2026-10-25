@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>痴人论辩笺 · 个人初判</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./preview.css">
+  <link rel="stylesheet" href="../../integration.css">
+  <link rel="stylesheet" href="../../progress-nav.css?v=6">
+</head>
+<body data-page="judgment">
+  <main class="debate-page judgment-page">
+    <header class="page-heading cjk" data-cjk-static>
+      <div><h1>痴人论辩笺 · 个人初判</h1></div>
+    </header>
+
+    <section class="judgment-layout">
+      <form class="paper-panel judgment-form" data-judgment-form novalidate>
+        <div class="judgment-head cjk" data-cjk-static>
+          <div><h2>你是否赞同 AI 对张岱“痴”的解释？</h2><p class="panel-note">请先选择自己的立场，再用原文说明理由。</p></div>
+          <button class="button secondary" type="button" data-action="open-source">回到原文寻找线索</button>
+        </div>
+        <fieldset class="stance-options">
+          <legend class="sr-only">选择你的立场</legend>
+          <label><input type="radio" name="stance" value="赞同"><span>赞同</span></label>
+          <label><input type="radio" name="stance" value="部分赞同"><span>部分赞同</span></label>
+          <label><input type="radio" name="stance" value="不赞同"><span>不赞同</span></label>
+        </fieldset>
+        <label class="field-label" for="original-reason">我的判断、理由与文本依据</label>
+        <textarea id="original-reason" data-original-reason maxlength="1000" placeholder="写下你的判断，并至少引用一处原文作依据。"></textarea>
+        <div class="form-meta"><span data-reason-count>0 / 1000</span><span>草稿与初判均保留。</span></div>
+        <p class="status-message" data-status role="status" aria-live="polite"></p>
+        <div class="form-actions">
+          <a class="button secondary" href="portrait.html">返回人物笺</a>
+          <button class="button secondary" type="button" data-action="save-judgment">保留我的判断</button>
+          <a class="button primary" href="challenge.html" data-enter-challenge>进入同伴质疑 <span aria-hidden="true">→</span></a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <div class="source-modal" data-source-modal hidden>
+    <div class="source-dialog" role="dialog" aria-modal="true" aria-labelledby="source-title">
+      <button class="source-close" type="button" data-action="close-source" aria-label="关闭课文原文">×</button>
+      <h2 id="source-title">湖心亭看雪</h2>
+      <p class="source-author">张岱</p>
+      <div class="source-text">
+        <p>崇祯五年十二月，余住西湖。大雪三日，湖中人鸟声俱绝。</p>
+        <p>是日更定矣，余拏一小舟，拥毳衣炉火，独往湖心亭看雪。雾凇沆砀，天与云与山与水，上下一白。湖上影子，惟长堤一痕、湖心亭一点、与余舟一芥、舟中人两三粒而已。</p>
+        <p>到亭上，有两人铺毡对坐，一童子烧酒炉正沸。见余大喜曰：“湖中焉得更有此人！”拉余同饮。余强饮三大白而别。问其姓氏，是金陵人，客此。</p>
+        <p>及下船，舟子喃喃曰：“莫说相公痴，更有痴似相公者！”</p>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="./preview.js?v=3"></script>
+</body>
+</html>

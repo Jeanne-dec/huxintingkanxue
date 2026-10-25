@@ -1,0 +1,69 @@
+/* 此刻，我想怎样回应：浅米白纸面、细线、墨青灰正文，一屏横向双栏。 */
+:root{color-scheme:light;--fe-paper:#f3f4f2;--fe-card:#fdfdfb;--fe-ink:#2f3533;--fe-muted:#9aa09b;--fe-line:#e3e2dc;--fe-line-soft:#eeede8;--fe-accent:#3f5f5b;--fe-accent-dark:#35524e;font-family:"Noto Serif CJK SC","Source Han Serif SC","Songti SC","SimSun",serif}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{margin:0;background:var(--fe-paper);color:var(--fe-ink);font-size:17px;line-break:strict;word-break:normal;overflow-wrap:break-word}
+button,input,textarea{font:inherit;color:inherit;font-family:inherit}
+a{color:inherit;text-decoration:none}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+:focus-visible{outline:2px solid rgba(63,95,91,.5);outline-offset:3px}
+
+body[data-page="response"]{height:100vh;overflow:hidden;background:var(--fe-paper)}
+.response-page{height:calc(100vh - var(--cp-h,0px));margin-top:var(--cp-h,0px);padding:clamp(14px,2vh,26px) clamp(16px,2.4vw,34px) clamp(14px,2vh,26px)}
+.response-card{height:100%;background:var(--fe-card);border:1px solid var(--fe-line);display:grid;grid-template-columns:minmax(0,1fr) clamp(280px,27vw,360px);overflow:hidden}
+
+/* 左栏：回应表单 */
+.response-form{display:flex;flex-direction:column;min-width:0;padding:clamp(20px,3vh,38px) clamp(24px,3vw,52px);gap:0}
+.form-head{display:flex;align-items:center;gap:18px}
+.form-head h1{margin:0;font-size:clamp(24px,2.1vw,31px);font-weight:600;letter-spacing:.03em;white-space:nowrap}
+.form-head::after{content:'';flex:1 1 auto;height:1px;background:var(--fe-line);margin-top:6px}
+.form-note{margin:10px 0 0;color:var(--fe-muted);font-size:14px;letter-spacing:.02em}
+
+.stance-options{margin:clamp(18px,3vh,34px) 0 0;padding:0;border:0;border-top:1px solid var(--fe-line);display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.stance-options legend{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.stance-options label{position:relative;display:flex;align-items:center;justify-content:center;min-height:clamp(48px,6.4vh,62px);border-bottom:1px solid var(--fe-line);color:#7c837f;font-size:19px;letter-spacing:.12em;cursor:pointer;transition:color .16s ease,background-color .16s ease}
+.stance-options label+label{border-left:1px solid transparent}
+.stance-options input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
+.stance-options label:has(input:checked){color:var(--fe-ink);background:linear-gradient(180deg,rgba(238,243,241,.55),rgba(247,249,247,.2));border-bottom:2px solid #5d7f78}
+.stance-options label:has(input:focus-visible){outline:2px solid rgba(63,95,91,.5);outline-offset:-4px}
+
+.writing-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:clamp(16px,2.6vh,28px) 0 10px}
+.writing-head h2{margin:0;font-size:18px;font-weight:600;letter-spacing:.04em}
+.writing-head span{color:var(--fe-muted);font-size:13px}
+.response-form textarea{flex:1 1 auto;min-height:150px;width:100%;border:1px solid #dcdbd4;background:#fff;padding:16px 18px;font-size:17px;line-height:1.95;color:var(--fe-ink);resize:none}
+.response-form textarea::placeholder{color:#b3b6b1}
+.form-meta{display:flex;justify-content:flex-end;margin:8px 0 0;color:var(--fe-muted);font-size:13px}
+.status-message{min-height:22px;margin:4px 0 0;font-size:14px;color:var(--fe-muted)}
+.status-message[data-type="error"]{color:#9c4a3f}
+.status-message[data-type="success"]{color:#3f6f68}
+.form-actions{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:clamp(10px,1.6vh,18px)}
+.back-link{display:inline-flex;align-items:center;gap:8px;color:#5f6c67;font-size:15px;letter-spacing:.04em;padding:10px 0}
+.back-link::before{content:'←';font-size:17px;line-height:1}
+.back-link:hover{color:var(--fe-accent)}
+.button{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:46px;padding:0 30px;border:1px solid var(--fe-accent);background:var(--fe-accent);color:#fbfaf6;font-size:16px;letter-spacing:.06em;cursor:pointer;transition:background-color .16s ease}
+.button:hover{background:var(--fe-accent-dark)}
+.button:disabled{opacity:.6;cursor:default}
+.button.secondary{background:transparent;border-color:var(--fe-line);color:var(--fe-ink)}
+
+/* 右栏：回看最初判断与同伴质疑 */
+.reflection-panel{border-left:1px solid var(--fe-line);padding:clamp(20px,3vh,38px) clamp(20px,2.2vw,34px);display:flex;flex-direction:column;gap:clamp(18px,3vh,34px);overflow:auto;background:#fcfcf9}
+.reflection-panel h2{margin:0;font-size:19px;font-weight:600;letter-spacing:.04em}
+.panel-note{margin:8px 0 0;color:var(--fe-muted);font-size:13px;line-height:1.7}
+.initial-review,.peer-review{display:flex;flex-direction:column;border-top:1px solid var(--fe-line);padding-top:clamp(14px,2.2vh,22px)}
+.reflection-panel>section:first-child{border-top:0;padding-top:0}
+.initial-toggle{display:flex;align-items:center;gap:10px;width:100%;margin-top:14px;padding:12px 0;border:0;border-top:1px solid var(--fe-line-soft);border-bottom:1px solid var(--fe-line-soft);background:transparent;color:#4a5a56;font-size:15px;text-align:left;cursor:pointer}
+.initial-toggle:hover{color:var(--fe-accent)}
+.toggle-mark{font-size:14px;color:#8a938f;transition:transform .16s ease}
+.initial-toggle[aria-expanded="true"] .toggle-mark{transform:rotate(180deg)}
+.initial-panel{margin-top:14px;font-size:14px;line-height:1.85;color:#4a5a56}
+.initial-panel[hidden]{display:none}
+.initial-stance{margin:0 0 8px;color:#6d7873}
+.initial-stance strong{color:var(--fe-ink);font-weight:600}
+.initial-panel h3{margin:0 0 6px;font-size:14px;font-weight:600;letter-spacing:.04em;color:#6d7873}
+.preserved-copy{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;color:#4a5a56}
+.peer-question{display:flex;gap:12px;margin-top:16px;padding-left:14px;border-left:2px solid #cad4ce}
+.peer-question span{color:#9aa5a0;line-height:1.9}
+.peer-question p{margin:0;font-size:15px;line-height:1.9;color:#3e4f4c;overflow-wrap:anywhere}
+
+@media(max-height:800px){.form-note{margin-top:6px}.stance-options{margin-top:16px}.writing-head{margin:14px 0 8px}.response-form textarea{min-height:110px}.form-actions{margin-top:8px}}
+@media(max-width:1000px){body[data-page="response"]{height:auto;overflow:auto}.response-page{height:auto;min-height:calc(100vh - var(--cp-h,0px))}.response-card{grid-template-columns:1fr;height:auto}.reflection-panel{border-left:0;border-top:1px solid var(--fe-line)}.response-form textarea{min-height:180px}}

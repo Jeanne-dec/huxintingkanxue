@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>此刻我想怎么回应｜湖心亭看雪</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./finale.css?v=3">
+  <link rel="stylesheet" href="../../progress-nav.css?v=6">
+</head>
+<body data-page="response">
+  <main class="response-page">
+    <section class="response-card">
+      <form class="response-form" data-response-form novalidate>
+        <div class="form-head"><h1>此刻，我想怎样回应？</h1></div>
+        <p class="form-note">请结合前面的交流，说说你此刻的理解。</p>
+        <fieldset class="stance-options">
+          <legend>选择此刻如何处理原来的判断</legend>
+          <label><input type="radio" name="response-stance" value="保留"><span>保留</span></label>
+          <label><input type="radio" name="response-stance" value="补充"><span>补充</span></label>
+          <label><input type="radio" name="response-stance" value="修订"><span>修订</span></label>
+        </fieldset>
+        <div class="writing-head"><h2>我现在想写给张岱的话</h2><span>以自己的话落笔</span></div>
+        <textarea id="new-response" data-response placeholder="写下此刻的理解，结合原文说明理由。" spellcheck="false"></textarea>
+        <div class="form-meta"><span data-count>0 字</span></div>
+        <p class="status-message" data-status role="status" aria-live="polite"></p>
+        <div class="form-actions">
+          <a class="back-link" href="../phase2-debate-preview/challenge.html">返回同伴质疑</a>
+          <button class="button primary" type="submit" data-save-response>收入我的画卷 <span aria-hidden="true">→</span></button>
+        </div>
+      </form>
+
+      <aside class="reflection-panel">
+        <section class="initial-review">
+          <h2>回看我的最初判断</h2>
+          <p class="panel-note">先隐藏，需要时再展开查看。</p>
+          <button class="initial-toggle" type="button" data-initial-toggle aria-expanded="false" aria-controls="initial-judgment">
+            <span class="toggle-mark" aria-hidden="true">⌄</span><span>展开我的初判</span>
+          </button>
+          <div class="initial-panel" id="initial-judgment" data-initial-panel hidden tabindex="-1">
+            <p class="initial-stance">最初立场：<strong data-initial-stance>尚未保存</strong></p>
+            <h3>原始理由与原文依据</h3>
+            <p class="preserved-copy" data-initial-reason>尚未保存个人初判。</p>
+          </div>
+        </section>
+        <section class="peer-review">
+          <h2>同伴提出的质疑</h2>
+          <p class="panel-note">这里只呈现此前真实保存的课堂记录。</p>
+          <div class="peer-question"><span aria-hidden="true">○</span><p data-peer-question>暂无已保存的同伴质疑。</p></div>
+        </section>
+      </aside>
+    </section>
+  </main>
+  <script type="module" src="./response.js?v=3"></script>
+</body>
+</html>

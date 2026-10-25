@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>痴人论辩笺 · 同伴质疑</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./preview.css">
+  <link rel="stylesheet" href="../../integration.css">
+  <link rel="stylesheet" href="../../progress-nav.css?v=6">
+</head>
+<body data-page="challenge">
+  <main class="debate-page challenge-page">
+    <header class="page-heading cjk" data-cjk-static>
+      <div><h1>痴人论辩笺 · 同伴质疑</h1></div>
+      <button class="button secondary" type="button" data-action="open-judgment">我最初的判断</button>
+    </header>
+
+    <section class="challenge-layout">
+      <form class="paper-panel challenge-form" data-challenge-form novalidate>
+        <div class="cjk" data-cjk-static><h2>同伴质疑 · 回到文本找依据</h2><p class="panel-note">手工记录课堂中真实听到的观点，再提出有文本依据的问题。</p></div>
+        <label class="field-label" for="heard-view">我听到的一种不同观点</label>
+        <textarea id="heard-view" data-heard-view maxlength="1000" placeholder="记录课堂中真实听到的观点；没有听到时可保持空白。"></textarea>
+        <label class="field-label" for="peer-question">我想追问的问题</label>
+        <textarea id="peer-question" data-peer-question maxlength="1000" placeholder="针对观点、文本证据或推理提问，不评价同学本人。"></textarea>
+        <p class="status-message" data-status role="status" aria-live="polite"></p>
+      </form>
+    </section>
+    <nav class="form-actions challenge-actions" aria-label="同伴质疑页面导航">
+      <a class="button secondary" href="judgment.html">返回个人初判</a>
+      <button class="button secondary" type="button" data-action="save-exchange">保存课堂交流记录</button>
+      <a class="button primary" href="../phase2-bridge/bridge.html" data-enter-bridge>进入课堂追问 <span aria-hidden="true">›</span></a>
+    </nav>
+  </main>
+
+  <div class="source-modal" data-judgment-modal hidden>
+    <div class="source-dialog" role="dialog" aria-modal="true" aria-labelledby="judgment-title">
+      <button class="source-close" type="button" data-action="close-judgment" aria-label="关闭我最初的判断">×</button>
+      <h2 id="judgment-title">我最初的判断</h2>
+      <p class="saved-stance">我的立场：<strong data-saved-stance>尚未保存</strong></p>
+      <section class="saved-copy"><h3>我的原始理由与依据</h3><p data-saved-reason>请返回“个人初判”保存自己的原话。</p></section>
+    </div>
+  </div>
+  <script type="module" src="./preview.js?v=3"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>一点入亭 · V8 八镜头</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./preview.css">
+  <link rel="stylesheet" href="../../integration.css">
+  <link rel="stylesheet" href="../../progress-nav.css?v=6">
+</head>
+<body>
+  <main class="pavilion-eight" data-ready="false" data-playing="false" data-paused="false" data-cut="fade" data-reduced="false" data-phase="hold-01">
+    <header class="preview-heading" data-dev-ui data-dev-only>
+      <div>
+        <p>第二教学环节 · 《一点入亭》八镜头独立样片（未接入正式课件）</p>
+        <h1>一点入亭</h1>
+      </div>
+      <div class="preview-status" aria-label="预览状态">
+        <span>镜头参数为首轮测试值</span>
+        <span>只读学生状态</span>
+      </div>
+    </header>
+
+    <div class="preview-layout">
+      <section class="stage-shell" aria-label="从学生四笔雪湖画卷连续推进至湖心亭 V8 终镜">
+        <!-- ══ 动画播放器起点（未来集成正式课件只复用此 .stage 容器内的三层）══ -->
+        <div class="stage" data-player>
+          <canvas data-frame width="1920" height="1080"></canvas>
+          <video data-v8 loop muted playsinline preload="auto" poster="assets/V8_终镜冻结底图_1120x630.png" aria-label="V8 已认可终镜六秒循环"></video>
+          <!-- 08 终镜文字层：V8 视频上方的可编辑 HTML 文字，逻辑坐标系=1120×630（见 preview.css） -->
+          <p class="v8-caption" data-v8-caption aria-label="到亭上，有两人铺毡对坐，一童子烧酒炉正沸。见余大喜曰：“湖中焉得更有此人！”"><span>到亭上，有两人</span><span>铺毡对坐，一童子</span><span>烧酒炉正沸。</span><span>见余大喜曰：</span><span>“湖中焉得更有此人！”</span></p>
+        </div>
+        <!-- ══ 动画播放器终点 ══ -->
+        <!-- 仅保留两个课堂按钮：播放/暂停 与 重播（其余开发调试控件已移除） -->
+        <div class="player-actions" data-dev-ui>
+          <button class="primary" data-action="start" type="button" disabled>开始播放</button>
+          <button data-action="replay" type="button" disabled>重播</button>
+        </div>
+        <!-- 课堂导航：返回完整课件 / 由教师主动进入人物笺（动画结束不自动跳页） -->
+        <div class="player-nav">
+          <a class="nav-return" href="../../../index.html?demo=1&amp;preview=0">‹ 返回完整课件</a>
+          <a class="nav-continue" href="../phase2-debate-preview/portrait.html">继续：人物笺 <span aria-hidden="true">›</span></a>
+        </div>
+        <!-- 时间轴为开发调试 UI，不属于未来课堂画面 -->
+        <div class="timeline" data-dev-ui data-dev-only aria-hidden="true">
+          <div class="timeline-track">
+            <div class="timeline-fill" data-progress></div>
+            <i class="timeline-cut" style="left:37.3853%;width:2.7523%" title="03→04 转场窗口 3.26—3.50s"></i>
+            <i class="timeline-end" style="left:100%" title="8.72s 进入 V8 循环"></i>
+          </div>
+          <p class="timeline-readout"><span data-clock>0.00</span>s / 8.72s（此后 6s 循环） · <span data-segment>01 · 雪湖远望</span></p>
+        </div>
+      </section>
+    </div>
+  </main>
+  <script type="module" src="./preview.js?v=2"></script>
+</body>
+</html>

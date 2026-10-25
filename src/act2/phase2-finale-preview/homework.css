@@ -1,0 +1,7 @@
+/* 尾声 · 课后学习任务：1672×941 设计稿按比例完整呈现；左上“返回上一页”为透明热区。 */
+html,body{margin:0;width:100%;height:100%;background:#edece1;font-family:"Noto Serif CJK SC","Source Han Serif SC","Songti SC","SimSun",serif}
+.homework-page{box-sizing:border-box;width:100%;height:100vh;display:grid;place-items:center}
+.homework-stage{position:relative;width:min(100%,calc((100vh - var(--cp-h,0px) - 34px)*1672/941));aspect-ratio:1672/941;background:#f3f1e8 url('../../assets/homework.png') center/cover no-repeat;box-shadow:0 24px 72px rgba(38,59,65,.2)}
+.homework-back{position:absolute;left:2.2%;top:4%;width:12.8%;height:6.6%;border-radius:6px;cursor:pointer}
+.homework-back:hover{background:rgba(67,93,111,.07)}
+.homework-back:focus-visible{outline:2px dashed rgba(38,55,65,.85);outline-offset:3px}

@@ -1,0 +1,71 @@
+*{box-sizing:border-box}
+body{margin:0;background:#f3efe6;color:#2d444a;font-family:"Noto Serif SC","Songti SC",serif}
+.pavilion-eight{max-width:1600px;margin:0 auto;padding:24px 28px 40px}
+.preview-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;border-bottom:2px solid #33454e;padding-bottom:12px;margin-bottom:20px}
+.preview-heading p{margin:0 0 4px;font-size:13px;letter-spacing:.08em;color:#6b7c80}
+.preview-heading h1{margin:0;font-size:30px;letter-spacing:.12em}
+.preview-status{display:flex;flex-direction:column;gap:4px;text-align:right;font-size:12px;color:#6b7c80}
+.preview-layout{display:grid;grid-template-columns:1fr;gap:0;align-items:start}
+
+.stage-shell{min-width:0}
+/* 舞台=播放器根容器：container-type 使文字层以 1120×630 逻辑坐标等比缩放（1cqi=宽度的1%，16:9 下 1120cqi=宽） */
+.stage{position:relative;width:100%;aspect-ratio:16/9;background:#0d1518;border-radius:6px;overflow:hidden;box-shadow:0 10px 32px rgba(25,40,45,.28);container-type:inline-size}
+.stage canvas,.stage video{position:absolute;inset:0;width:100%;height:100%;display:block}
+.stage video{opacity:0;visibility:hidden;transition:none}
+.stage video.on{opacity:1;visibility:visible}
+
+/* —— 08 终镜文字层（播放器组成部分；规格见 preview-core.js TEXT_OVERLAY）—— */
+/* 位置/字号/行距全部按 1120×630 逻辑坐标换算为 cqi：x=352→31.4286cqi，y=116→10.3571cqi，22px→1.9643cqi */
+.v8-caption{position:absolute;left:31.4286cqi;top:10.3571cqi;margin:0;opacity:0;pointer-events:none;z-index:2;
+  font-family:"Noto Serif CJK SC","Source Han Serif SC","Songti SC","SimSun",serif;
+  font-size:1.9643cqi;line-height:1.5455;color:#27201C;text-align:left}
+.v8-caption span{display:block}
+/* 极淡羽化白（x326–628/y102–280 逻辑范围），radial-gradient 软边无方框，不遮人物/火/烟 */
+.v8-caption::before{content:"";position:absolute;left:-2.3214cqi;top:-1.25cqi;width:26.9643cqi;height:15.8929cqi;z-index:-1;
+  background:radial-gradient(ellipse at center,rgba(255,253,246,.44) 0%,rgba(255,253,246,.30) 46%,rgba(255,253,246,0) 78%)}
+
+.timeline{margin-top:12px}
+.timeline-track{position:relative;height:8px;border-radius:4px;background:#d8d2c2;overflow:hidden}
+.timeline-fill{position:absolute;left:0;top:0;bottom:0;width:0;background:#33454e;border-radius:4px}
+.timeline-cut{position:absolute;top:0;bottom:0;background:rgba(156,53,44,.45);pointer-events:none}
+.timeline-end{position:absolute;top:-2px;bottom:-2px;width:2px;background:#9c352c;pointer-events:none}
+.timeline-readout{margin:6px 0 0;font-size:13px;color:#52666b;font-variant-numeric:tabular-nums}
+
+/* 课堂控制条：仅播放/暂停 + 重播两枚按钮 */
+.player-actions{display:flex;gap:10px;margin-top:14px}
+.player-actions button{font:inherit;font-size:14px;padding:7px 18px;border-radius:4px;border:1px solid #33454e;background:#fff;color:#33454e;cursor:pointer}
+.player-actions button.primary{background:#33454e;color:#fbf8f1}
+.player-actions button:disabled{opacity:.38;cursor:not-allowed}
+.player-actions button:not(:disabled):hover{filter:brightness(1.06)}
+
+.pavilion-eight[data-ready="error"] .stage{outline:2px solid #9c352c}
+/* 仅播放器模式（?ui=0，调试/截图/未来集成预览用）：隐藏全部调试 UI，舞台独占版面 */
+.player-only [data-dev-ui]{display:none}
+.player-only{max-width:none;padding:0}
+.player-only .preview-layout{grid-template-columns:1fr;gap:0}
+.player-only .stage{border-radius:0;box-shadow:none}
+@media (prefers-reduced-motion:reduce){.stage video{transition:none}}
+
+/* —— 课堂导航（返回完整课件 / 继续：人物笺）—— */
+.player-nav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px}
+.player-nav a{font:inherit;font-size:14px;padding:7px 18px;border-radius:4px;border:1px solid #33454e;background:#fff;color:#33454e;text-decoration:none;letter-spacing:.04em}
+.player-nav a.nav-continue{background:#33454e;color:#fbf8f1}
+.player-nav a:not(.nav-continue):hover{filter:brightness(1.06)}
+.player-nav a.nav-continue:hover{filter:brightness(1.12)}
+
+/* —— 完整课件课堂模式（?flow=phase2）：16:9 等比 letterbox 满屏适配 ——
+   内部逻辑坐标（Canvas 1920×1080 / V8 1120×630 / cqi 文字层）不动，只改外部容器。 */
+html.flow-mode .pavilion-eight{max-width:none;width:100%;height:100vh;margin:0;padding:0;display:flex;flex-direction:column}
+html.flow-mode .preview-layout{flex:1;min-height:0;display:grid;grid-template-columns:1fr;align-items:stretch}
+html.flow-mode .stage-shell{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;min-height:0;padding:10px 14px 0}
+html.flow-mode .stage{width:min(100%,calc((100vh - 138px)*16/9));max-height:calc(100vh - 138px);border-radius:0;box-shadow:none}
+html.flow-mode .player-actions,html.flow-mode .player-nav{margin:0;padding:0;flex:0 0 auto}
+/* 课堂按钮四角：开始播放左上、重播右上、返回完整课件左下、继续右下 */
+html.flow-mode .player-actions{display:block}
+html.flow-mode .player-actions button{position:fixed;z-index:30;margin:0;padding:7px 18px;min-width:96px}
+html.flow-mode .player-actions [data-action="start"]{left:16px;top:calc(var(--cp-h,0px) + 8px)}
+html.flow-mode .player-actions [data-action="replay"]{right:16px;top:calc(var(--cp-h,0px) + 8px)}
+html.flow-mode .player-nav{display:block}
+html.flow-mode .player-nav a{position:fixed;z-index:30;margin:0}
+html.flow-mode .player-nav .nav-return{left:16px;bottom:14px}
+html.flow-mode .player-nav .nav-continue{right:16px;bottom:14px}

@@ -1,0 +1,37 @@
+html,body{margin:0;height:100%}
+body{background:#f4f3ef;font-family:"Source Han Serif SC","Noto Serif SC","Songti SC","STSong","SimSun",serif;color:#2f4d5c}
+.bridge-stage{position:fixed;inset:2vh 1.5vw;border-radius:16px;overflow:hidden;background:#e8ebe9 url(../../assets/00_approved_after_repair_master.png) center/cover no-repeat;box-shadow:0 18px 44px rgba(60,80,88,.16)}
+.bridge-step{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0;opacity:0;visibility:hidden;transition:opacity .55s ease,visibility 0s linear .55s}
+.bridge-step.current{opacity:1;visibility:visible;transition:opacity .55s ease}
+.bridge-step h1{margin:0;font-size:clamp(30px,3.3vw,52px);font-weight:700;letter-spacing:.1em;color:#2f4d5c;text-align:center}
+.step-question::before,.step-return::before{content:'';position:absolute;inset:0;background:radial-gradient(54% 38% at 50% 44%,rgba(248,247,242,.8),rgba(248,247,242,0) 74%);pointer-events:none}
+.step-return::before{background:radial-gradient(58% 48% at 50% 48%,rgba(248,247,242,.92),rgba(248,247,242,0) 78%)}
+.step-quote::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(248,247,242,.92) 0%,rgba(248,247,242,.62) 40%,rgba(248,247,242,0) 66%);pointer-events:none}
+.step-question h1,.step-question .bridge-ornament,.step-question .bridge-button,.step-return h1,.step-return .bridge-ornament,.step-return .bridge-subtitle,.step-return .bridge-button,.bridge-quote{position:relative;z-index:1}
+.step-question{padding-bottom:16vh}
+.bridge-ornament{display:flex;align-items:center;gap:16px;margin:2.4vh 0 0}
+.bridge-ornament::before,.bridge-ornament::after{content:'';width:clamp(60px,7vw,120px);height:1px;background:rgba(47,77,92,.4)}
+.bridge-ornament i{width:7px;height:7px;transform:rotate(45deg);background:#4d6d7d}
+.bridge-subtitle{margin:2vh 0 0;font-size:clamp(14px,1.15vw,19px);letter-spacing:.16em;color:#5d7480}
+.bridge-button{display:inline-flex;align-items:center;gap:.55em;padding:.7em 2.2em;border:1px solid rgba(66,98,113,.55);border-radius:999px;background:rgba(252,251,246,.88);color:#35566b;font:inherit;font-size:clamp(14px,1.1vw,18px);letter-spacing:.18em;text-decoration:none;cursor:pointer}
+.bridge-button:hover{background:#fdfcf7}
+.bridge-button span{font-size:1.05em;letter-spacing:0}
+.step-question .bridge-button{margin-top:4.5vh}
+.step-quote{align-items:flex-start}
+.bridge-scholar{position:absolute;top:4%;right:0;bottom:0;margin:0;width:min(34vw,500px);background:url(../phase2-debate-preview/assets/portrait_extracted_preview_ONLY.png) right bottom/contain no-repeat;opacity:.95;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8%);mask-image:linear-gradient(90deg,transparent 0,#000 8%);pointer-events:none}
+.bridge-quote{position:relative;z-index:1;margin-left:clamp(28px,12vw,230px);max-width:min(46vw,640px)}
+.bridge-quote-line{margin:0;font-size:clamp(26px,2.9vw,46px);font-weight:700;line-height:1.6;letter-spacing:.06em;color:#2f4d5c}
+.bridge-quote-author{margin:3.4vh 0 0;font-size:clamp(13px,1.05vw,17px);letter-spacing:.3em;color:#4a616d}
+.bridge-quote-note{margin:1.2vh 0 0;font-size:clamp(12px,.95vw,16px);letter-spacing:.14em;color:#6b8089}
+.step-quote .bridge-button{margin-top:4.6vh}
+.step-return .bridge-button{margin-top:9vh}
+
+/* “再看雪湖”过渡页：母图 + 右侧问题；整屏可点，点空白处进入下一页 */
+.step-revisit{align-items:stretch;justify-content:flex-start;padding:clamp(18px,3.2vh,32px) clamp(26px,4vw,62px);background:#f4f3ef;cursor:pointer}
+.revisit-body{position:relative;z-index:1;flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,2.5fr) minmax(220px,.92fr);gap:clamp(12px,1.5vw,22px)}
+.revisit-scene{margin:0;min-height:0;border:1px solid #c6ccc7;border-radius:4px;overflow:hidden;background:#e8ebe9}
+.revisit-scene canvas{display:block;width:100%;height:100%;object-fit:contain}
+.revisit-ask{display:flex;align-items:center;justify-content:center;padding:clamp(14px,2vw,30px);border:1px solid #b9c3bf;border-radius:10px;background:#fbfaf5}
+.revisit-ask p{margin:0;text-align:center;font-size:clamp(20px,2vw,34px);font-weight:600;line-height:1.95;letter-spacing:.06em;color:#2f4d5c}
+@media(max-width:900px){.revisit-body{grid-template-columns:1fr;grid-template-rows:1.1fr .7fr}.revisit-ask p{font-size:22px}}
+@media(max-width:900px){.bridge-quote{margin:0 auto;padding:0 8vw;max-width:none}.bridge-scholar{opacity:.35}}

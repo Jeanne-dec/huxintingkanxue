@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>一点入亭 · V4 七镜头隔离预览</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./preview.css">
+  <link rel="stylesheet" href="../../integration.css">
+</head>
+<body>
+  <main class="pavilion-seven" data-shot="shot-01" data-ready="false" data-settled="false" data-playing="false" data-paused="false">
+    <header class="preview-heading">
+      <div>
+        <p data-dev-only>第二教学环节 · V4 七镜头隔离预览</p>
+        <h1>一点入亭</h1>
+      </div>
+      <div class="preview-status" data-dev-only aria-label="预览状态">
+        <span>七镜头最终认可版</span>
+        <span>只读学生状态</span>
+      </div>
+    </header>
+
+    <div class="preview-layout">
+      <section class="scene-shell" aria-label="从学生雪湖画卷沿湖面推进并转角进入亭中">
+        <canvas class="student-scene" data-student-scene width="1672" height="941"></canvas>
+        <img class="final-scene" data-final-scene src="../pavilion-v3/assets/02_认可版_入亭后_两坐一立终点.png" alt="亭中两位客人铺毡对坐，一位童子站在烧酒炉旁" aria-hidden="true">
+        <div class="turn-veil" data-turn-veil aria-hidden="true"></div>
+
+        <button class="pavilion-hotspot" data-action="start" type="button" aria-label="点击湖心亭，开始七镜头入亭">
+          <span>一点入亭</span>
+        </button>
+        <p class="scene-caption" data-scene-caption>点击画面中的真实湖心亭</p>
+      </section>
+
+      <aside class="preview-guide">
+        <p class="guide-kicker">镜头 <strong data-shot-number>01</strong> / 07</p>
+        <h2 data-shot-title>雪湖远望</h2>
+        <p class="guide-copy" data-shot-copy>正在读取学生当前四笔画卷。</p>
+        <ol class="shot-list" data-dev-only aria-label="一点入亭七镜头">
+          <li data-shot-item="shot-01"><b>01</b><span>雪湖远望</span></li>
+          <li data-shot-item="shot-02"><b>02</b><span>向亭推进</span></li>
+          <li data-shot-item="shot-03"><b>03</b><span>来到亭前</span></li>
+          <li data-shot-item="shot-04"><b>04</b><span>沿平台换角</span></li>
+          <li data-shot-item="shot-05"><b>05</b><span>定格视角</span></li>
+          <li data-shot-item="shot-06"><b>06</b><span>继续前推</span></li>
+          <li data-shot-item="shot-07"><b>07</b><span>入亭终点</span></li>
+        </ol>
+
+        <p class="student-values" data-student-values data-dev-only aria-live="polite"></p>
+        <p class="preview-message" data-preview-message role="status"></p>
+
+        <div class="preview-actions">
+          <button class="primary" data-action="start" type="button">从湖面入亭</button>
+          <button data-action="pause" type="button" disabled>暂停</button>
+          <button data-action="replay" type="button">重播</button>
+          <button data-action="reset" type="button">返回当前画卷</button>
+          <a class="primary continue-link" href="../phase2-debate-preview/portrait.html">继续：人物笺 <span aria-hidden="true">›</span></a>
+        </div>
+        <label class="motion-toggle"><input data-reduced-motion type="checkbox"> 减少动态效果</label>
+        <a class="return-link" href="../../../index.html?demo=1&amp;preview=0">返回完整课件</a>
+        <p class="read-only-note" data-dev-only>本页只读取四笔、题跋、自评与个人画卷状态，不代填、不写回、不重置。七镜头总览仅作设计校对，不会进入运行画面。</p>
+      </aside>
+    </div>
+  </main>
+  <script type="module" src="./preview.js"></script>
+</body>
+</html>

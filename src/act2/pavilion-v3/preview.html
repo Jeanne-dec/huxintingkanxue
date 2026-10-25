@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>一点入亭 · V3 隔离交互预览</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./preview.css">
+</head>
+<body>
+  <main class="pavilion-preview" data-stage="student" data-ready="false">
+    <header class="preview-heading">
+      <div>
+        <p>第二教学环节 · V3 隔离交互预览</p>
+        <h1>一点入亭</h1>
+      </div>
+      <div class="preview-status" aria-label="预览状态">
+        <span>最终认可素材</span>
+        <span>只读学生状态</span>
+      </div>
+    </header>
+
+    <div class="preview-layout">
+      <section class="scene-shell" aria-label="从学生雪湖画卷推进至亭中近景">
+        <canvas class="student-scene" data-student-scene width="1672" height="941"></canvas>
+        <div class="storyboard-frame storyboard-closer" data-storyboard-closer aria-hidden="true">
+          <img src="./assets/01_认可版_远望推进转角入亭_四帧.png" alt="">
+        </div>
+        <div class="storyboard-frame storyboard-turn" data-storyboard-turn aria-hidden="true">
+          <img src="./assets/01_认可版_远望推进转角入亭_四帧.png" alt="">
+        </div>
+        <img class="interior-scene" data-interior-scene src="./assets/02_认可版_入亭后_两坐一立终点.png" alt="亭中两位客人铺毡对坐，一位童子站在烧酒炉旁">
+        <div class="snow-veil" aria-hidden="true"></div>
+
+        <button class="pavilion-hotspot" data-action="start" type="button" aria-label="点击湖心亭，开始沿湖面入亭">
+          <span>一点入亭</span>
+        </button>
+        <p class="scene-caption" data-scene-caption>点击画面中的真实湖心亭</p>
+      </section>
+
+      <aside class="preview-guide">
+        <p class="guide-kicker">镜头进度</p>
+        <h2 data-stage-title>从你的画卷出发</h2>
+        <p class="guide-copy" data-stage-copy>正在读取学生当前四笔画卷。</p>
+        <ol class="stage-list" aria-label="入亭镜头五阶段">
+          <li data-stage-item="student"><b>一</b><span>当下画卷</span></li>
+          <li data-stage-item="approach"><b>二</b><span>沿湖推进</span></li>
+          <li data-stage-item="closer"><b>三</b><span>渐近亭前</span></li>
+          <li data-stage-item="turn"><b>四</b><span>平台转角</span></li>
+          <li data-stage-item="interior"><b>五</b><span>两坐一立</span></li>
+        </ol>
+
+        <p class="student-values" data-student-values aria-live="polite"></p>
+        <p class="preview-message" data-preview-message role="status"></p>
+
+        <div class="preview-actions">
+          <button class="primary" data-action="start" type="button">从湖面入亭</button>
+          <button data-action="replay" type="button">重播</button>
+          <button data-action="reset" type="button">返回当前画卷</button>
+        </div>
+        <label class="motion-toggle"><input data-reduced-motion type="checkbox"> 减少动态效果</label>
+        <a class="return-link" href="../../../index.html?demo=1&amp;preview=0">返回完整课件</a>
+        <p class="read-only-note">本页只读取四笔、题跋与自评状态，不写回、不重置。分镜第一格不会替代学生画卷。</p>
+      </aside>
+    </div>
+  </main>
+  <script type="module" src="./preview.js"></script>
+</body>
+</html>
